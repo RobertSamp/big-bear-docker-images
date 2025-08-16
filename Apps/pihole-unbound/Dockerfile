@@ -1,5 +1,5 @@
 # Use pihole base image
-FROM pihole/pihole:2025.06.2
+FROM pihole/pihole:latest
 
 # Install Unbound using apk (Alpine package manager)
 RUN apk update && apk add --no-cache unbound \
@@ -15,7 +15,7 @@ RUN chown -R unbound:unbound /var/lib/unbound
 
 # Copy Unbound configuration files
 COPY unbound/unbound.conf /etc/unbound/unbound.conf
-
+    
 # Copy Pi-hole configuration files
 COPY pihole/setupVars.conf /etc/pihole/setupVars.conf
 
@@ -30,3 +30,4 @@ ENTRYPOINT ["/start-unbound.sh"]
 HEALTHCHECK --interval=1m --timeout=10s \
   CMD dig +short @127.0.0.1 -p 53 pi.hole || exit 1; \
   dig +short @127.0.0.1 -p 5353 example.com || exit 1
+  
