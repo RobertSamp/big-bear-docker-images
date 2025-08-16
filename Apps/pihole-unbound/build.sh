@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Set image name and tag
-IMAGE_NAME="bigbeartechworld/big-bear-pihole-unbound"
-TAG="2023.10.0"
+IMAGE_NAME="roberto/pihole-unbound"
+TAG="2025.8.0"
 
 # Check if docker is installed
 if ! command -v docker &> /dev/null; then
